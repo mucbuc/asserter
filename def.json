@@ -1,7 +1,7 @@
 {	
 	"sources": 
 	[
-		"src/archiver.cpp",
+		"src/archiver.hxx",
 		"src/archiver.h",
 		"src/asserter.cpp",
 		"src/asserter.h",

@@ -61,7 +61,7 @@ const asserter_t& asserter_t::archive_result(
     const char* function,
     const char* message) const
 {
-    auto& a(private_assert::archiver::instance());
+    auto& a(private_assert::archiver<>::instance());
     if (pass())
         a.pass();
     else

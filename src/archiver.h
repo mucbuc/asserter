@@ -1,11 +1,11 @@
-#ifndef ARCHIVER_INCLUDE_GUARD_03K9027KSIQ
-#define ARCHIVER_INCLUDE_GUARD_03K9027KSIQ
+#pragma once 
 
 #include <iostream>
 #include <string>
 #include <vector>
 
 namespace private_assert {
+template<typename T = void>
 struct archiver {
     static archiver& instance();
 
@@ -24,4 +24,4 @@ private:
 };
 }
 
-#endif // ARCHIVER_INCLUDE_GUARD_03K9027KSIQ
+#include "archiver.hxx"

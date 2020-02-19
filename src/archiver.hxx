@@ -8,13 +8,15 @@
 using namespace std;
 
 namespace private_assert {
-archiver& archiver::instance()
+template<typename T> 
+auto archiver<T>::instance() -> archiver &
 {
     static archiver local;
     return local;
 }
 
-archiver::~archiver()
+template<typename T> 
+archiver<T>::~archiver()
 {
     fstream out("result.json", fstream::out);
 
@@ -36,12 +38,14 @@ archiver::~archiver()
     out << "}\n";
 }
 
-void archiver::pass()
+template<class T>
+void archiver<T>::pass()
 {
     ++m_passed;
 }
 
-void archiver::fail(
+template<class T>
+void archiver<T>::fail(
     const char* file,
     int line,
     const char* function,
