@@ -1,9 +1,10 @@
 {
 	"scripts": {
-		"test": "tape test/test.js"
-	  },
+		"test": "tape test/test.js",
+                "format": "clang-format -i --style=Webkit src/*.h src/*.cpp test/src/*.cpp"
+	},
 	"dependencies": {
 		"expector": "*",
-		"tape": "*"
+		"tape": "^4.13.0"
 	}
 }
