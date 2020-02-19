@@ -1,11 +1,11 @@
-#pragma once 
+#pragma once
 
 #include <iostream>
 #include <string>
 #include <vector>
 
 namespace private_assert {
-template<typename T = void>
+template <typename T = void>
 struct archiver {
     static archiver& instance();
 

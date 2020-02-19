@@ -2,8 +2,7 @@
     Reference: http://www.drdobbs.com/article/print?articleId=184403745
 */
 
-#ifndef ASSERT_H_9879879hkjh
-#define ASSERT_H_9879879hkjh
+#pragma once
 
 #include <assert.h>
 #include <cstring>
@@ -11,15 +10,15 @@
 
 #ifdef NDEBUG
 
-#define ASSERT(expr)                      \
-    if (false)                            \
-        ;                                 \
-    else                                  \
-        struct local_t {                  \
-            local_t(const asserter_t&) {} \
-        } local_obj = asserter_t(false)
+#define ASSERT(expr)                        \
+    if (false)                              \
+        ;                                   \
+    else                                    \
+        struct local_t {                    \
+            local_t(const asserter_t<>&) {} \
+        } local_obj = asserter_t<>(false)
 
-// asserter_t
+template <typename T = void>
 class asserter_t {
 public:
     template <class T>
@@ -41,17 +40,17 @@ public:
         ;                                                                          \
     else                                                                           \
         struct local_t {                                                           \
-            local_t(const asserter_t& o)                                           \
+            local_t(const asserter_t<>& o)                                         \
             {                                                                      \
                 if (!(o.pass()))                                                   \
                     assert(false);                                                 \
             }                                                                      \
-        } local_obj = asserter_t(expr)                                             \
+        } local_obj = asserter_t<>(expr)                                           \
                           .print_message(__FILE__, __LINE__, __FUNCTION__, #expr)  \
                           .archive_result(__FILE__, __LINE__, __FUNCTION__, #expr) \
                           .SMART_ASSERT_A
 
-// asserter_t
+template <typename T = void>
 struct asserter_t final {
     asserter_t(bool);
 
@@ -82,5 +81,3 @@ private:
 #include "asserter.hxx"
 
 #endif // NDEBUG
-
-#endif // ASSERT_H_9879879hkjh
