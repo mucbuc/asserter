@@ -11,8 +11,8 @@ template<class U> const asserter_t<T> & asserter_t<T>::print_current_val(const U
 /////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 asserter_t<T>::asserter_t(bool value)
-    : SMART_ASSERT_A(*this)
-    , SMART_ASSERT_B(*this)
+    : SMART_ASSERT_A{*this}
+    , SMART_ASSERT_B{*this}
     , m_value(value)
 {
 }
