@@ -12,3 +12,4 @@ set_target_properties(Example PROPERTIES
 )
 
 target_link_libraries(Example INTERFACE asserter)
+#add_definitions(-DNDEBUG)

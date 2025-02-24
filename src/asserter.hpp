@@ -9,7 +9,7 @@
 #ifdef NDEBUG
 
 #define ASSERT(expr)                         \
-    if (false)                               \
+    if (true)                                \
         ;                                    \
     else                                     \
         struct local_t {                     \
@@ -19,8 +19,11 @@
 template <typename T = void>
 class asserter_t {
 public:
-    template <class T>
-    const asserter_t operator()(const T&) const { return asserter_t(); }
+
+    asserter_t(bool = false) {}
+
+    template <class U>
+    const asserter_t operator()(const U&) const { return asserter_t(); }
 };
 
 #else
