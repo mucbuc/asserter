@@ -1,6 +1,6 @@
 # asserter
 
-assertion util
+assertion util inspired by John Torjo's solution described [here](https://www.drdobbs.com/cpp/enhancing-assertions/184403745)
 
 ## build
 
@@ -28,4 +28,4 @@ Assertion failed: (false), function local_t, file check_assert.cpp, line 10.
 
 ## test usage
 
-To track passed assertions use `test.hpp"` instead of `asserter.hpp`.
+To track passed assertions use `test.hpp` instead of `asserter.hpp`.
