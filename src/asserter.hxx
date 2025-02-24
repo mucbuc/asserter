@@ -1,3 +1,5 @@
+#include <iostream>
+
 // /////////////////////////////////////////////////////////////////////////////////////////////
 // // asserter_t
 // /////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,11 +64,11 @@ const asserter_t<T>& asserter_t<T>::archive_result(
     const char* message) const
 {
     auto& a(private_assert::archiver<>::instance());
-    if (pass())
+    if (pass()) {
         a.pass();
-    else
+    }
+    else {
         a.fail(file, line, function, message);
+    }
     return *this;
 }
-
-

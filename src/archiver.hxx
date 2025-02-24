@@ -1,23 +1,21 @@
-#include <cstring>
+#include <string>
 #include <fstream>
 #include <sstream>
-#include <vector>
-
-#include "archiver.h"
-
-using namespace std;
+#include <cassert>
 
 namespace private_assert {
-template<typename T> 
+template<typename T>
 auto archiver<T>::instance() -> archiver &
 {
     static archiver local;
     return local;
 }
 
-template<typename T> 
+template<typename T>
 archiver<T>::~archiver()
 {
+    using namespace std;
+
     fstream out("result.json", fstream::out);
 
     out << "{\n";
@@ -51,6 +49,7 @@ void archiver<T>::fail(
     const char* function,
     const char* message)
 {
+    using namespace std;
 
     stringstream entry;
     entry << "{" << endl;

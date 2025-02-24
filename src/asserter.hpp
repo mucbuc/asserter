@@ -1,12 +1,10 @@
-/* 
+/*
     Reference: http://www.drdobbs.com/article/print?articleId=184403745
 */
 
 #pragma once
 
-#include <assert.h>
-#include <cstring>
-#include <iostream>
+#include "archiver.hpp"
 
 #ifdef NDEBUG
 
@@ -42,8 +40,9 @@ public:
         struct local_t {                                                           \
             local_t(const asserter_t<>& o)                                         \
             {                                                                      \
-                if (!(o.pass()))                                                   \
+                if (!(o.pass())) {                                                 \
                     assert(false);                                                 \
+                }                                                                  \
             }                                                                      \
         } local_obj = asserter_t<>(expr)                                           \
                           .print_message(__FILE__, __LINE__, __FUNCTION__, #expr)  \

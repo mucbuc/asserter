@@ -1,15 +1,12 @@
-#include <exception>
 #include <string>
 
-#include <tmp/src/test.h>
+#include "../../src/asserter.hpp"
 
-int main(int argc, const char* argv[])
+int main()
 {
     using namespace std;
-    string a("hello");
+    string a("hello assert");
 
-    ASSERT(!a.empty())
-    (a)(a.size());
-
+    ASSERT(a.empty())(a)(a.size());
     return 0;
 }
