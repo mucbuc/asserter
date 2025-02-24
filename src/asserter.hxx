@@ -3,31 +3,32 @@
 // /////////////////////////////////////////////////////////////////////////////////////////////
 // // asserter_t
 // /////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T>
-template<class U> const asserter_t<T> & asserter_t<T>::print_current_val(const U & value, const char * message) const
+template <typename T>
+template <class U>
+const asserter_t<T>& asserter_t<T>::print_current_val(const U& value, const char* message) const
 {
     std::cout << message << ": " << value << std::endl;
-    return * this;
+    return *this;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T>
+template <typename T>
 asserter_t<T>::asserter_t(bool value)
-    : SMART_ASSERT_A{*this}
-    , SMART_ASSERT_B{*this}
+    : SMART_ASSERT_A { *this }
+    , SMART_ASSERT_B { *this }
     , m_value(value)
 {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T>
+template <typename T>
 bool asserter_t<T>::pass() const
 {
     return m_value;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T>
+template <typename T>
 const asserter_t<T>& asserter_t<T>::print_message(
     const char* file,
     int line,
@@ -56,7 +57,7 @@ const asserter_t<T>& asserter_t<T>::print_message(
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T>
+template <typename T>
 const asserter_t<T>& asserter_t<T>::archive_result(
     const char* file,
     int line,
@@ -66,8 +67,7 @@ const asserter_t<T>& asserter_t<T>::archive_result(
     auto& a(private_assert::archiver<>::instance());
     if (pass()) {
         a.pass();
-    }
-    else {
+    } else {
         a.fail(file, line, function, message);
     }
     return *this;

@@ -8,12 +8,12 @@
 
 #ifdef NDEBUG
 
-#define ASSERT(expr)                        \
-    if (false)                              \
-        ;                                   \
-    else                                    \
-        struct local_t {                    \
-            local_t(const asserter_t<>&) {} \
+#define ASSERT(expr)                         \
+    if (false)                               \
+        ;                                    \
+    else                                     \
+        struct local_t {                     \
+            local_t(const asserter_t<>&) { } \
         } local_obj = asserter_t<>(false)
 
 template <typename T = void>

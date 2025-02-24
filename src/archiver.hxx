@@ -1,17 +1,17 @@
-#include <string>
+#include <cassert>
 #include <fstream>
 #include <sstream>
-#include <cassert>
+#include <string>
 
 namespace private_assert {
-template<typename T>
-auto archiver<T>::instance() -> archiver &
+template <typename T>
+auto archiver<T>::instance() -> archiver&
 {
     static archiver local;
     return local;
 }
 
-template<typename T>
+template <typename T>
 archiver<T>::~archiver()
 {
     using namespace std;
@@ -36,13 +36,13 @@ archiver<T>::~archiver()
     out << "}\n";
 }
 
-template<class T>
+template <class T>
 void archiver<T>::pass()
 {
     ++m_passed;
 }
 
-template<class T>
+template <class T>
 void archiver<T>::fail(
     const char* file,
     int line,
