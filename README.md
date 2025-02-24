@@ -28,4 +28,4 @@ Assertion failed: (false), function local_t, file check_assert.cpp, line 10.
 
 ## test usage
 
-To track passed assertions use `test.hpp` instead of `asserter.hpp`.
+To track passed assertions use `test.hpp` instead of `asserter.hpp`. This will also write a file `result.json` containing number of assertions passed.
