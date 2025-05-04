@@ -47,7 +47,7 @@ public:
                     assert(false);                                                 \
                 }                                                                  \
             }                                                                      \
-        } local_obj = asserter_t<>(expr)                                           \
+        } local_obj = asserter_t<>(bool(expr))                                     \
                           .print_message(__FILE__, __LINE__, __FUNCTION__, #expr)  \
                           .archive_result(__FILE__, __LINE__, __FUNCTION__, #expr) \
                           .SMART_ASSERT_A
