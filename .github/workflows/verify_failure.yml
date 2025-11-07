@@ -40,7 +40,7 @@ jobs:
       - name: Build
         run: |
           cd test
-          emcmake -B web-build
+          emcmake cmake -B web-build
           cmake --build web-build -j 8
 
       - name: Verify assertion fails
