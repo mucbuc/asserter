@@ -2,6 +2,8 @@
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
+#else
+#include <cassert>
 #endif
 
 // /////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,8 +39,9 @@ void asserter_t<T>::on_failure() const
 {
 #ifdef __EMSCRIPTEN__
     emscripten_force_exit(1);
-#endif
+#else
     assert(false);
+#endif
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////

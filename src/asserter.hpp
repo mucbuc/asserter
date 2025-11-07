@@ -5,7 +5,6 @@
 #pragma once
 
 #include "archiver.hpp"
-#include <cassert>
 
 #ifdef NDEBUG
 
@@ -58,7 +57,6 @@ struct asserter_t final {
 
     bool pass() const;
     void on_failure() const;
-
     const asserter_t& print_message(
         const char* file,
         int line,
