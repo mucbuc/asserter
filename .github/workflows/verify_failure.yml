@@ -8,28 +8,50 @@ on:
     branches: [master]
 
 jobs:
-  build:
-    runs-on: macos-latest
+  test-native:
+    build:
+      runs-on: macos-latest
 
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+
+        - name: Build
+          run: |
+              cd test     
+              cmake -B build
+              cmake --build build -j 8
+
+        - name: Verify assertion fails
+          run: |
+            cd test 
+            if ./build/Example; then
+              echo "ERROR: Test should have failed but passed"
+              exit 1
+            else
+              echo "Test failed as expected"
+              exit 0
+            fi
+
+  test-emscripten:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
+      
+      - uses: mymindstorm/setup-emsdk@v14
 
-      - name: Build
+      - name: Build emscripten test
         run: |
-            cd test     
-            cmake -B build
-            cmake --build build -j 8
-
-      - name: Verify Assert
-        run: |
-          cd test 
-          if ./build/Example; then
-            echo "ERROR: Test should have failed but passed"
-            exit 1
-          else
-            echo "Test failed as expected"
-            exit 0
-          fi
-     
-
+          cd test
+          emcmake cmake -B web-build
+          cmake --build web-build
+      
+        - name: Verify assertion fails
+          run: |
+            if node web-build/Example.js; then
+              echo "ERROR: Test should have failed"
+              exit 1
+            else
+              echo "Test failed as expected"
+              exit 0
+            fi
