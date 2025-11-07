@@ -1,6 +1,6 @@
 # asserter
 
-![Native Tests](https://github.com/mucbuc/asserter/workflows/Verify%20Assertion%Failure/badge.svg)
+![Verify Assertion Failure](https://github.com/mucbuc/asserter/workflows/Verify%20Assertion%Failure/badge.svg)
 
 assertion util inspired by John Torjo's solution described [here](https://www.drdobbs.com/cpp/enhancing-assertions/184403745)
 
