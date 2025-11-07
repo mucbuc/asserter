@@ -1,0 +1,35 @@
+name: Verify Assertion Failure
+
+on:
+  push:
+    branches: 
+      - '**'
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |        
+            cd test     
+            cmake -B build
+            cmake --build build -j 8
+
+      - name: Verify Assert
+        run: |
+          cd test 
+          if ./build/Example; then
+            echo "ERROR: Test should have failed but passed"
+            exit 1
+          else
+            echo "Test failed as expected"
+            exit 0
+          fi
+     
+
