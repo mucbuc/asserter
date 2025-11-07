@@ -5,6 +5,7 @@
 #pragma once
 
 #include "archiver.hpp"
+#include <cassert>
 
 #ifdef NDEBUG
 
@@ -19,8 +20,7 @@
 template <typename T = void>
 class asserter_t {
 public:
-
-    asserter_t(bool = false) {}
+    asserter_t(bool = false) { }
 
     template <class U>
     const asserter_t operator()(const U&) const { return asserter_t(); }
@@ -44,7 +44,7 @@ public:
             local_t(const asserter_t<>& o)                                         \
             {                                                                      \
                 if (!(o.pass())) {                                                 \
-                    assert(false);                                                 \
+                    o.on_failure();                                                \
                 }                                                                  \
             }                                                                      \
         } local_obj = asserter_t<>(bool(expr))                                     \
@@ -57,6 +57,7 @@ struct asserter_t final {
     asserter_t(bool);
 
     bool pass() const;
+    void on_failure() const;
 
     const asserter_t& print_message(
         const char* file,
