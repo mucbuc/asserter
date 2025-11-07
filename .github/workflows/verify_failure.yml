@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-native:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
         - name: Checkout repository
           uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
             fi
 
   test-emscripten:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
 
