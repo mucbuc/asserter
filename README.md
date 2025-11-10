@@ -32,8 +32,8 @@ a.size(): 12
 
 ## Features
 
-- 🎯 **Rich Context Capture** - Automatically print variable values when assertions fail
-- 🧪 **Test Mode** - Track passed/failed assertions with JSON output
+- 🎯 **Rich Context Capture** - Include additional values when assertions fail
+- 🧪 **Test Mode** - Track number of passed/failed assertions with JSON output
 - 🔄 **Continue on Failure** - Option to continue execution after assertion failures
 - 🚀 **Header-Only** - Easy integration, no separate compilation needed
 - 🌐 **Cross-Platform** - Works with native builds and Emscripten
