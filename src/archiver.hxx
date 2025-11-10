@@ -19,6 +19,11 @@ archiver<T>::~archiver()
 
     fstream out("result.json", fstream::out);
 
+    if (!out) {
+        cerr << "Error: archiver failed to open result.json for writing" << endl;
+        return;
+    }
+
     out << "{\n";
     out << "\"passed\": " << m_passed;
 

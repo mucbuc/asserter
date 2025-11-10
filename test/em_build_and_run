@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-emcmake cmake -B web-build
-cmake --build web-build -j 8
-ctest --test-dir web-build

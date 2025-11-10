@@ -12,14 +12,7 @@ set_target_properties(Example PROPERTIES
     COMPILE_WARNING_AS_ERROR ON
 )
 
-if (EMSCRIPTEN)
-    target_link_options(Example PRIVATE 
-        -sEXIT_RUNTIME=1
-    )
-endif()
-
 target_link_libraries(Example INTERFACE asserter)
-#add_definitions(-DNDEBUG)
 
 add_test(
     NAME test_assert_failure

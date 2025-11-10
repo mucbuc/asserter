@@ -16,12 +16,13 @@ jobs:
         - name: Build
           run: |
               cd test
-              ./build_and_run
+              cmake -B build
+              cmake --build build
 
         - name: Verify assertion fails
           run: |
             cd test
-            if ./build/Example; then
+            if ctest --test-dir build; then  
               echo "ERROR: Test should have failed but passed"
               exit 1
             else
@@ -39,12 +40,13 @@ jobs:
       - name: Build
         run: |
           cd test
-          ./em_build_and_test
+          emcmake cmake -B web-build
+          cmake --build web-build 
 
       - name: Verify assertion fails
         run: |
           cd test
-          if node web-build/Example.js; then
+          if ctest --test-dir web-build; then
             echo "ERROR: Test should have failed"
             exit 1
           else
