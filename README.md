@@ -44,7 +44,7 @@ Assertion failed: (false), function local_t, file check_assert.cpp, line 10.
 
 To print passed assertions use `test.hpp` instead of `asserter.hpp`. This will write the file `result.json` containing number of assertions passed.
 
-### continue on failure for tests
+#### continue on failure
 
 To continue execution on failed assertion define `CONTINUE_ON_FAILURE` before including `test.hpp`.
 The output file `result.json` will include the number of failed assertions.
