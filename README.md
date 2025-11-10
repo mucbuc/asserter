@@ -185,7 +185,7 @@ Contributions are welcome! Please feel free to submit issues or pull requests.
 
 License
 This project is licensed under the GNU General Public License v3.0 - see below for details.
-Copyright (C) [2025] [Mark Busenitz]
+Copyright (C) 2025 Mark Busenitz
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
