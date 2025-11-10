@@ -15,7 +15,7 @@ auto archiver<T>::instance() -> archiver&
 
 template <typename T>
 template <typename O>
-void archiver<T>::print_results(O& out)
+bool archiver<T>::print_results(O& out)
 {
     using namespace std;
     out << "{\n";
@@ -27,13 +27,15 @@ void archiver<T>::print_results(O& out)
         auto i(m_failed.begin());
         out << "\"failed\": [" << endl
             << *(i++) << endl;
-        while (i != m_failed.end())
+        while (i != m_failed.end()) {
             out << ", " << *(i++) << endl;
+        }
         out << "]" << endl;
     } else {
         out << endl;
     }
     out << "}\n";
+    return out.good();
 }
 
 template <typename T>
@@ -42,14 +44,9 @@ archiver<T>::~archiver()
     using namespace std;
     fstream out(m_results_file, fstream::out);
 
-    if (!out) {
-        cerr << "Error: archiver failed to open " << m_results_file << " for writing" << endl;
+    if (!out || !print_results(out)) {
+        cerr << "Error: archiver failed to open or write to " << m_results_file << ". Writing to std::cerr instead" << endl;
         print_results(cerr);
-    } else {
-        print_results(out);
-        if (!out) {
-            cerr << "Error: archiver failed to complete writing to " << m_results_file << endl;
-        }
     }
 }
 
