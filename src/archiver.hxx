@@ -42,7 +42,7 @@ template <typename T>
 archiver<T>::~archiver()
 {
     using namespace std;
-    fstream out(m_results_file, fstream::out);
+    ofstream out(m_results_file);
 
     if (!out || !print_results(out)) {
         cerr << "Error: archiver failed to open or write to " << m_results_file << ". Writing to std::cerr instead" << endl;
