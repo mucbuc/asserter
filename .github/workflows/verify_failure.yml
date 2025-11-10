@@ -16,8 +16,7 @@ jobs:
         - name: Build
           run: |
               cd test
-              cmake -B build
-              cmake --build build -j 8
+              ./build_and_run
 
         - name: Verify assertion fails
           run: |
@@ -40,8 +39,7 @@ jobs:
       - name: Build
         run: |
           cd test
-          emcmake cmake -B web-build
-          cmake --build web-build -j 8
+          ./em_build_and_test
 
       - name: Verify assertion fails
         run: |

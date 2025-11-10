@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 
 project(Example)
+enable_testing()
 
 add_executable(Example src/check_assert.cpp)
 
@@ -19,3 +20,8 @@ endif()
 
 target_link_libraries(Example INTERFACE asserter)
 #add_definitions(-DNDEBUG)
+
+add_test(
+    NAME test_assert_failure
+    COMMAND Example
+)
