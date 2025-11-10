@@ -14,17 +14,10 @@ auto archiver<T>::instance() -> archiver&
 }
 
 template <typename T>
-archiver<T>::~archiver()
+template <typename O>
+void archiver<T>::print_results(O& out)
 {
     using namespace std;
-
-    fstream out("result.json", fstream::out);
-
-    if (!out) {
-        cerr << "Error: archiver failed to open result.json for writing" << endl;
-        return;
-    }
-
     out << "{\n";
     out << "\"passed\": " << m_passed;
 
@@ -41,6 +34,23 @@ archiver<T>::~archiver()
         out << endl;
     }
     out << "}\n";
+}
+
+template <typename T>
+archiver<T>::~archiver()
+{
+    using namespace std;
+    fstream out(m_results_file, fstream::out);
+
+    if (!out) {
+        cerr << "Error: archiver failed to open " << m_results_file << " for writing" << endl;
+        print_results(cerr);
+    } else {
+        print_results(out);
+        if (!out) {
+            cerr << "Error: archiver failed to complete writing to " << m_results_file << endl;
+        }
+    }
 }
 
 template <class T>

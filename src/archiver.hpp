@@ -19,7 +19,12 @@ struct archiver {
 
 private:
     std::size_t m_passed = 0;
+
+    template <typename O>
+    void print_results(O&);
+
     std::vector<std::string> m_failed;
+    const std::string m_results_file = "results.json";
 };
 }
 
