@@ -19,21 +19,8 @@ bool archiver<T>::print_results(O& out)
 {
     using namespace std;
     out << "{\n";
-    out << "\"passed\": " << m_passed;
-
-    if (m_failed.begin() != m_failed.end()) {
-        out << "," << endl;
-
-        auto i(m_failed.begin());
-        out << "\"failed\": [" << endl
-            << *(i++) << endl;
-        while (i != m_failed.end()) {
-            out << ", " << *(i++) << endl;
-        }
-        out << "]" << endl;
-    } else {
-        out << endl;
-    }
+    out << "  \"passed\": " << m_passed << "," << endl;
+    out << "  \"failed\": " << m_failed << endl;
     out << "}\n";
     return out.good();
 }
@@ -57,25 +44,8 @@ void archiver<T>::pass()
 }
 
 template <class T>
-void archiver<T>::fail(
-    const char* file,
-    int line,
-    const char* function,
-    const char* message)
+void archiver<T>::fail()
 {
-    using namespace std;
-
-    stringstream entry;
-    entry << "{" << endl;
-
-    if (strlen(message)) {
-        entry << "\"message\":\"" << message << "\"," << endl;
-    }
-    entry << "\"file\":\"" << file << "\"," << endl;
-    entry << "\"function\":\"" << function << "\"," << endl;
-    entry << "\"line\":" << line << endl;
-    entry << "}" << endl;
-
-    m_failed.push_back(entry.str());
+    ++m_failed;
 }
 } // private_assert

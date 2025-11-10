@@ -9,3 +9,6 @@ add_library(asserter INTERFACE
     src/asserter.hxx
 )
 
+set_target_properties(asserter PROPERTIES
+    CXX_STANDARD 11
+}

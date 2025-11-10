@@ -1,6 +1,6 @@
 #include <string>
 
-#include "../../src/test.hpp"
+#include <asserter/src/asserter.hpp>
 
 int main()
 {
