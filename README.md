@@ -1,8 +1,8 @@
 # asserter
 
-![Verify Assertion Failure](https://erdani.org/publications/cuj-08-2003.php.html)
+![Verify Assertion Failure](https://github.com/mucbuc/asserter/workflows/Verify%20Assertion%20Failure/badge.svg)
 
-assertion util inspired by John Torjo's solution described [here](https://www.drdobbs.com/cpp/enhancing-assertions/184403745)
+assertion util inspired by John Torjo's solution described [here](https://erdani.org/publications/cuj-08-2003.php.html)
 
 ## native build
 
