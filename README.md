@@ -2,15 +2,27 @@
 
 ![Verify Assertion Failure](https://github.com/mucbuc/asserter/workflows/Verify%20Assertion%20Failure/badge.svg)
 
-assertion util inspired by John Torjo's solution described [here](https://www.drdobbs.com/cpp/enhancing-assertions/184403745)
+assertion util inspired by John Torjo's solution described in [this article](https://erdani.org/publications/cuj-08-2003.php.html)
 
-## build
+## native build
 
-see `test/build_and_run`
+```bash
+cd test
+cmake -B build
+cmake --build build
+```
+
+## emscripten build
+
+```bash
+cd test
+emcmake cmake -B web-build
+cmake --build web-build
+```
 
 ## standard usage
 
-```
+```cpp
 string a("hello assert");
 
 ASSERT(a.empty())(a)(a.size());
@@ -30,4 +42,9 @@ Assertion failed: (false), function local_t, file check_assert.cpp, line 10.
 
 ## test usage
 
-To track passed assertions use `test.hpp` instead of `asserter.hpp`. This will also write a file `result.json` containing number of assertions passed.
+To print passed assertions use `test.hpp` instead of `asserter.hpp`. This will write the file `result.json` containing number of assertions passed.
+
+### continue on failure for tests
+
+To continue execution on failed assertion define `CONTINUE_ON_FAILURE` before including `test.hpp`.
+The output file `result.json` will include the number of failed assertions.
