@@ -19,8 +19,12 @@ bool archiver<T>::print_results(O& out)
 {
     using namespace std;
     out << "{\n";
-    out << "  \"passed\": " << m_passed << "," << endl;
-    out << "  \"failed\": " << m_failed << endl;
+    out << "  \"passed\": " << m_passed;
+    if (m_failed) {
+        out << "," << "\n";
+        out << "  \"failed\": " << m_failed;
+    }
+    out << "\n";
     out << "}\n";
     return out.good();
 }
